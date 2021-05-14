@@ -1,0 +1,49 @@
+{% load static %}
+<header class="header">
+    <div class="container">
+        <div class="header-row">
+            <div class="logo">
+                <a href="#"><img src="{% static 'img/m11.png' %}"></a>
+            </div>
+            <button type="button" class="nav-toggler">
+                <span></span>
+            </button>
+            <nav class="nav">
+                <ul>
+                    <li class="nav-item"><a href="#home">Home</a></li>
+                    <li class="nav-item"><a href="#about">About</a></li>
+                    <li class="nav-item"><a href="#work">Our Work</a></li>
+                    <li class="nav-item"><a href="#team">Team</a></li>
+                    <li class="nav-item"><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+
+<script type="text/javascript">
+    const navToggler = document.querySelector(".nav-toggler");
+
+    navToggler.addEventListener("click", toggleNav);
+
+    function toggleNav() {
+        navToggler.classList.toggle("active");
+        document.querySelector(".nav").classList.toggle("open");
+    }
+
+    document.addEventListener("click", function(e){
+        if(e.target.closest(".nav-item")){
+            toggleNav();
+        }
+    });
+
+     window.addEventListener("scroll", function(){
+        if(this.pageYOffset > 60){
+            document.querySelector(".header").classList.add("sticky")
+        }else{
+            document.querySelector(".header").classList.remove("sticky")
+        }
+     })
+
+</script>
